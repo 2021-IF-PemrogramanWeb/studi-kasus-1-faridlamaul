@@ -1,6 +1,10 @@
 <?php
 include "../config.php";
 session_start();
+// var_dump($_SESSION);
+if (!isset($_SESSION['login_in'])) {
+    echo "<script type='text/javascript'>alert('Anda tidak diperkenankan masuk ke halaman ini!');location.href = \"../login.php\"</script>";
+}
 $getData = mysqli_query($conn, "SELECT * FROM mhs");
 ?>
 
@@ -77,27 +81,14 @@ $getData = mysqli_query($conn, "SELECT * FROM mhs");
                             <tbody>
                                 <?php
                                 while ($i = mysqli_fetch_array($getData)) {
-                                    $count = 1;
-                                    if ($count % 2 == 1) {
-                                        echo
-                                        "<tr class='odd'>
-                                                <td>$i[id]</td>
-                                                <td>$i[nama]</td>
-                                                <td>$i[email]</td>
-                                                <td>$i[gender]</td>
-                                                <td>$i[ipk]</td>
-                                            </tr>";
-                                    } else {
-                                        echo
-                                        "<tr class='even'>
-                                                <td>$i[id]</td>
-                                                <td>$i[nama]</td>
-                                                <td>$i[email]</td>
-                                                <td>$i[gender]</td>
-                                                <td>$i[ipk]</td>
-                                            </tr>";
-                                    };
-                                    $count++;
+                                    echo
+                                    "<tr class='odd'>
+                                            <td>$i[id]</td>
+                                            <td>$i[nama]</td>
+                                            <td>$i[email]</td>
+                                            <td>$i[gender]</td>
+                                            <td>$i[ipk]</td>
+                                    </tr>";
                                 }
                                 ?>
                             </tbody>

@@ -1,10 +1,14 @@
 <?php
 include "../config.php";
 session_start();
+if (!isset($_SESSION['login_in'])) {
+    echo "<script type='text/javascript'>alert('Anda tidak diperkenankan masuk ke halaman ini!');location.href = \"../login.php\"</script>";
+}
 $getIPK23 = mysqli_query($conn, "SELECT COUNT(*) FROM mhs WHERE ipk >= 2 AND ipk < 3");
 $getIPK34 = mysqli_query($conn, "SELECT COUNT(*) FROM mhs WHERE ipk >= 3 AND ipk <= 4");
 $a = mysqli_fetch_array($getIPK23);
 $b = mysqli_fetch_array($getIPK34);
+// var_dump($_SESSION);
 ?>
 
 <!DOCTYPE html>

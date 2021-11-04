@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "phpnative";
+$dbname = "studi-kasus-1";
 
 // create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
