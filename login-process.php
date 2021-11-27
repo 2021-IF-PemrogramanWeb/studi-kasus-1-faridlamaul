@@ -4,8 +4,8 @@ include "config.php";
 session_start();
 // var_dump($_SESSION);
 if (isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
     $query = mysqli_query($conn, "SELECT * FROM admin WHERE email = '$email' AND password = '$password'");
     if (mysqli_num_rows($query) != 0) {
         $get = mysqli_fetch_array($query);
